@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <title><?= $title ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="<?= base_url('admin/css/simplebar.css') ?>">
     <!-- Fonts CSS -->
@@ -19,12 +19,14 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="<?= base_url('admin/css/app-light.css') ?>" id="lightTheme">
     <link rel="stylesheet" href="<?= base_url('admin/css/app-dark.css') ?>" id="darkTheme" disabled>
+    <!-- sweet alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@4/default.css">
 </head>
 
 <body class="light ">
     <div class="wrapper vh-100">
         <div class="row align-items-center h-100">
-            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="<?= base_url('/login') ?>" method="post">
                 <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
                     <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
                         <g>
@@ -35,13 +37,24 @@
                     </svg>
                 </a>
                 <h1 class="h6 mb-3">Sign in</h1>
+                <?php
+                $errors = session()->getFlashdata('errors');
+                if (!empty($errors)) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <?php foreach ($errors as $key => $value) { ?>
+                                <li><?= esc($value); ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php  } ?>
                 <div class="form-group">
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email address" required="" autofocus="">
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="text" id="inputEmail" name="username" class="form-control form-control-lg" placeholder="Email address" autofocus="">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control form-control-lg" placeholder="Password" required="">
+                    <input type="password" id="inputPassword" name="password" class="form-control form-control-lg" placeholder="Password">
                 </div>
                 <div class="checkbox mb-3">
                     <label>
@@ -64,6 +77,8 @@
     <script src="<?= base_url('admin/js/apps.js') ?>"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <!-- sweet alert js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -73,6 +88,24 @@
         gtag('js', new Date());
         gtag('config', 'UA-56159088-1');
     </script>
+    <?php if (session()->get('pesan')) { ?>
+        <script>
+            Swal.fire({
+                title: "Gagal",
+                text: "Username atau Password Salah!",
+                icon: "warning"
+            });
+        </script>
+    <?php } ?>
+    <?php if (session()->get('success')) { ?>
+        <script>
+            Swal.fire({
+                title: "Sukses",
+                text: "Logout Berhasil!",
+                icon: "success"
+            });
+        </script>
+    <?php } ?>
 </body>
 
 </html>
