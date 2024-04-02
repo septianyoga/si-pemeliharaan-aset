@@ -18,6 +18,13 @@
             </div>
         </form>
     </div>
+    <?php if (session()->get('login')) { ?>
+        <div class="col-12">
+            <div class="alert alert-success" role="alert">
+                <span class="fe fe-check-circle fe-16 mr-2"></span> Selamat datang <?= session()->get('nama') ?>, anda login sebagai <?= session()->get('role') ?>!
+            </div>
+        </div>
+    <?php } ?>
 </div>
 <div class="mb-2 align-items-center">
     <div class="card shadow mb-4">
