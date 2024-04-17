@@ -26,17 +26,19 @@
 <body class="light ">
     <div class="wrapper vh-100">
         <div class="row align-items-center h-100">
-            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="<?= base_url('/login') ?>" method="post">
-                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                    <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-                        <g>
-                            <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                            <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                            <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                        </g>
-                    </svg>
-                </a>
-                <h1 class="h6 mb-3">Sign in</h1>
+            <form action="<?= base_url('/registrasi') ?>" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
+                <div class="mx-auto text-center my-4">
+                    <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+                        <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
+                            <g>
+                                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
+                                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
+                                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
+                            </g>
+                        </svg>
+                    </a>
+                    <h2 class="my-3">Register</h2>
+                </div>
                 <?php
                 $errors = session()->getFlashdata('errors');
                 if (!empty($errors)) { ?>
@@ -49,21 +51,37 @@
                     </div>
                 <?php  } ?>
                 <div class="form-group">
-                    <label for="inputEmail" class="sr-only">Username</label>
-                    <input type="text" id="inputEmail" name="username" class="form-control form-control-lg" placeholder="Username" autofocus="">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Masukan Email" value="<?= old('email') ?>">
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" name="password" class="form-control form-control-lg" placeholder="Password">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nama_user">Nama</label>
+                        <input type="text" name="nama_user" id="nama_user" class="form-control" placeholder="Masukan Nama" value="<?= old('nama_user') ?>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Masukan Username" value="<?= old('username') ?>">
+                    </div>
                 </div>
-                <div class="checkbox mb-3">
-                    <a href="" class="text-decoration-none ">Lupa Password?</a>
+                <hr class="my-4">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputPassword5">Password</label>
+                            <input type="password" name="password" class="form-control" id="inputPassword5" placeholder="Masukan Password">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputPassword6">Password Konfirmasi</label>
+                            <input type="password" name="passwordkonf" class="form-control" id="inputPassword6" placeholder="Masukan Password Konfirmasi">
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
-                <div class="checkbox mt-3">
-                    <a class="text-decoration-none " href="<?= base_url('registrasi') ?>">Belum mempunyai akun? Registrasi! </a>
-                </div>
-                <p class="mt-5 mb-3 text-muted">© 2020</p>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                <p class="text-center mt-3"><a class="text-decoration-none text-center" href="<?= base_url('/login') ?>">Sudah memiliki akun? Login Sekarang.</a></p>
+                <p class="mt-5 mb-3 text-muted text-center">© 2020</p>
             </form>
         </div>
     </div>
@@ -103,7 +121,7 @@
         <script>
             Swal.fire({
                 title: "Sukses",
-                text: "<?= session()->get('success') ?>",
+                text: "Logout Berhasil!",
                 icon: "success"
             });
         </script>

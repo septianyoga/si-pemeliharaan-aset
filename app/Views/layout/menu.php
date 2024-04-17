@@ -11,25 +11,14 @@
                 <i class="fe fe-sun fe-16"></i>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-                <span class="fe fe-grid fe-16"></span>
-            </a>
-        </li>
-        <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-                <span class="fe fe-bell fe-16"></span>
-                <span class="dot dot-md bg-success"></span>
-            </a>
-        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="avatar avatar-sm mt-2">
-                    <img src="<?= base_url('admin/assets/avatars/face-1.jpg') ?>" alt="..." class="avatar-img rounded-circle">
+                    <img src="<?= base_url('assets/user.png') ?>" alt="..." class="avatar-img rounded-circle">
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="<?= base_url('/profil') ?>">Profile</a>
                 <a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a>
             </div>
         </li>
@@ -66,12 +55,63 @@
             <span>Pages</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="<?= base_url('user') ?>">
-                    <i class="fe fe-user fe-16"></i>
-                    <span class="ml-3 item-text">User</span>
-                </a>
-            </li>
+            <?php if (session()->get('role') == 'Admin') { ?>
+                <li class="nav-item w-100 <?= $title == 'Kelola User' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('user') ?>">
+                        <i class="fe fe-user fe-16"></i>
+                        <span class="ml-3 item-text">User</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown <?= $title == 'Tambah Aset' || $title == 'Aset PT LEN' || $title == 'Aset PT DAHANA' || $title == 'Aset PT PAL' || $title == 'Aset PT DI' || $title == 'Aset PT PINDAD' ? 'active' : '' ?>">
+                    <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-settings fe-16"></i>
+                        <span class="ml-3 item-text">Aset</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100 <?= $title == 'Tambah Aset' || $title == 'Aset PT LEN' || $title == 'Aset PT DAHANA' || $title == 'Aset PT PAL' || $title == 'Aset PT DI' || $title == 'Aset PT PINDAD' ? 'show' : '' ?>" id="fileman">
+                        <a class="nav-link pl-3 <?= $title == 'Tambah Aset' ? 'active' : '' ?> " href="<?= base_url('/aset/add') ?>"><span class="ml-1">Tambah Aset</span></a>
+                        <a class="nav-link pl-3 <?= $title == 'Aset PT LEN' ? 'active' : '' ?>" href="<?= base_url('/aset?pt=PT LEN') ?>"><span class="ml-1">PT LEN</span></a>
+                        <a class="nav-link pl-3 <?= $title == 'Aset PT DAHANA' ? 'active' : '' ?>" href="<?= base_url('/aset?pt=PT DAHANA') ?>"><span class="ml-1">PT DAHANA</span></a>
+                        <a class="nav-link pl-3 <?= $title == 'Aset PT PAL' ? 'active' : '' ?>" href="<?= base_url('/aset?pt=PT PAL') ?>"><span class="ml-1">PT PAL</span></a>
+                        <a class="nav-link pl-3 <?= $title == 'Aset PT DI' ? 'active' : '' ?>" href="<?= base_url('/aset?pt=PT DI') ?>"><span class="ml-1">PT DI</span></a>
+                        <a class="nav-link pl-3 <?= $title == 'Aset PT PINDAD' ? 'active' : '' ?>" href="<?= base_url('/aset?pt=PT PINDAD') ?>"><span class="ml-1">PT PINDAD</span></a>
+                    </ul>
+                </li>
+                <li class="nav-item w-100 <?= $title == 'Lihat Jadwal Aktivitas' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('jadwal_aktivitas') ?>">
+                        <i class="fe fe-activity fe-16"></i>
+                        <span class="ml-3 item-text">Lihat Jadwal Aktivitas</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100 <?= $title == 'Buat Jadwal Aktivitas Terkini' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('jadwal_aktivitas/add') ?>">
+                        <i class="fe fe-file-plus fe-16"></i>
+                        <span class="ml-3 item-text">Buat Jadwal Aktivitas</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php if (session()->get('role') == 'Driver') { ?>
+                <li class="nav-item w-100 <?= $title == 'Lihat Jadwal Aktivitas Terkini' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('lihat_jadwal') ?>">
+                        <i class="fe fe-file-plus fe-16"></i>
+                        <span class="ml-3 item-text">Lihat Jadwal Aktivitas</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100 <?= $title == 'Riwayat Aktivitas' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('riwayat_aktivitas') ?>">
+                        <i class="fe fe-file-plus fe-16"></i>
+                        <span class="ml-3 item-text">Riwayat Aktivitas</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php if (session()->get('role') == 'User PIC') { ?>
+                <li class="nav-item w-100 <?= $title == 'Buat Jadwal Pemeliharaan Aset' ? 'active' : '' ?> ">
+                    <a class="nav-link" href="<?= base_url('jadwal_pemeliharaan/add') ?>">
+                        <i class="fe fe-file-plus fe-16"></i>
+                        <span class="ml-3 item-text">Buat Jadwal Pemeliharaan</span>
+                    </a>
+                </li>
+
+            <?php } ?>
         </ul>
     </nav>
 </aside>

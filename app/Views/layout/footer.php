@@ -51,10 +51,10 @@
   });
   $('.drgpicker').daterangepicker({
     singleDatePicker: true,
-    timePicker: false,
+    timePicker: true,
     showDropdowns: true,
     locale: {
-      format: 'MM/DD/YYYY'
+      format: 'YYYY-MM-DD hh-mm-ss A'
     }
   });
   $('.time-input').timepicker({

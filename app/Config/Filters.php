@@ -24,7 +24,9 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'adminfilter'   => \App\Filters\AdminFilter::class
+        'adminfilter'   => \App\Filters\AdminFilter::class,
+        'driverfilter'  => \App\Filters\DriverFilter::class,
+        'userPIC'       => \App\Filters\UserPICFilter::class
     ];
 
     /**
@@ -40,6 +42,8 @@ class Filters extends BaseConfig
                     '/',
                     '/login',
                     '/login/*',
+                    '/registrasi',
+                    '/registrasi/*'
                 ]
             ],
         ],
@@ -50,6 +54,28 @@ class Filters extends BaseConfig
                     '/dashboard',
                     '/user',
                     '/user/*',
+                    '/aset',
+                    '/aset/*',
+                    '/jadwal_aktivitas',
+                    '/jadwal_aktivitas/*',
+                    '/profil',
+                    '/profil/*',
+                ]
+            ],
+            'driverfilter' => [
+                'except' => [
+                    '/dashboard',
+                    '/lihat_jadwal',
+                    '/riwayat_aktivitas',
+                    '/profil',
+                    '/profil/*',
+                ]
+            ],
+            'userPIC' => [
+                'except' => [
+                    '/dashboard',
+                    '/jadwal_pemeliharaan',
+                    '/jadwal_pemeliharaan/*',
                 ]
             ],
         ],

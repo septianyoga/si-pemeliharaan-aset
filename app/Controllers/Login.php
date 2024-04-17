@@ -50,6 +50,8 @@ class Login extends BaseController
                 session()->set('email', $auth['email']);
                 session()->set('role', $auth['role']);
                 return redirect()->to(base_url('dashboard'))->with('login', 'Login Berhasil.');
+            } else {
+                return redirect()->back()->with('pesan', 'Username atau Password Salah');
             }
         } else {
             return redirect()->back()->with('pesan', 'Username atau Password Salah');
