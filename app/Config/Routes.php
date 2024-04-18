@@ -37,5 +37,15 @@ $routes->post('/jadwal_aktivitas/(:num)', 'JadwalAktivitasController::update/$1'
 $routes->get('/lihat_jadwal', 'JadwalAktivitasController::lihatJadwal');
 $routes->get('/riwayat_aktivitas', 'JadwalAktivitasController::riwayatAktivitas');
 
+$routes->get('/jadwal_pemeliharaan', 'JadwalPemeliharaanController::index');
 $routes->get('/jadwal_pemeliharaan/add', 'JadwalPemeliharaanController::new');
 $routes->post('/jadwal_pemeliharaan', 'JadwalPemeliharaanController::create');
+$routes->post('/jadwal_pemeliharaan/(:num)', 'JadwalPemeliharaanController::update/$1');
+
+$routes->get('/laporan_pemeliharaan', 'JadwalPemeliharaanController::laporanPemeliharaan');
+$routes->get('/cetak_pemeliharaan', 'JadwalPemeliharaanController::cetakPemeliharaan');
+
+$routes->get('/lihat_kondisi_aset', 'AsetController::lihatKondisi');
+
+$routes->get('/laporan_monitoring', 'AsetController::laporanMonitoring');
+$routes->get('/cetak_monitoring', 'AsetController::cetakMonitoring');
