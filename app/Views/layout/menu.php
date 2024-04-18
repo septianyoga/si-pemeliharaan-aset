@@ -92,17 +92,29 @@
             <?php if (session()->get('role') == 'Driver') { ?>
                 <li class="nav-item w-100 <?= $title == 'Lihat Jadwal Aktivitas Terkini' ? 'active' : '' ?> ">
                     <a class="nav-link" href="<?= base_url('lihat_jadwal') ?>">
-                        <i class="fe fe-file-plus fe-16"></i>
+                        <i class="fe fe-activity fe-16"></i>
                         <span class="ml-3 item-text">Lihat Jadwal Aktivitas</span>
                     </a>
                 </li>
                 <li class="nav-item w-100 <?= $title == 'Riwayat Aktivitas' ? 'active' : '' ?> ">
                     <a class="nav-link" href="<?= base_url('riwayat_aktivitas') ?>">
-                        <i class="fe fe-file-plus fe-16"></i>
+                        <i class="fe fe-clock fe-16"></i>
                         <span class="ml-3 item-text">Riwayat Aktivitas</span>
                     </a>
                 </li>
             <?php } ?>
+            <li class="nav-item w-100 <?= $title == 'Lihat Status Kondisi Aset' ? 'active' : '' ?> ">
+                <a class="nav-link" href="<?= base_url('lihat_kondisi_aset') ?>">
+                    <i class="fe fe-eye fe-16"></i>
+                    <span class="ml-3 item-text">Lihat Status Kondisi Aset</span>
+                </a>
+            </li>
+            <li class="nav-item w-100 <?= $title == 'Lihat Jadwal Pemeliharaan Aset' ? 'active' : '' ?> ">
+                <a class="nav-link" href="<?= base_url('jadwal_pemeliharaan') ?>">
+                    <i class="fe fe-calendar fe-16"></i>
+                    <span class="ml-3 item-text">Lihat Jadwal Pemeliharaan</span>
+                </a>
+            </li>
             <?php if (session()->get('role') == 'User PIC') { ?>
                 <li class="nav-item w-100 <?= $title == 'Buat Jadwal Pemeliharaan Aset' ? 'active' : '' ?> ">
                     <a class="nav-link" href="<?= base_url('jadwal_pemeliharaan/add') ?>">
@@ -110,8 +122,17 @@
                         <span class="ml-3 item-text">Buat Jadwal Pemeliharaan</span>
                     </a>
                 </li>
-
             <?php } ?>
+            <li class="nav-item dropdown <?= $title == 'Laporan Pemeliharaan Aset' || $title == 'Laporan Monitoring Aset' ? 'active' : '' ?>">
+                <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-file-text fe-16"></i>
+                    <span class="ml-3 item-text">Laporan</span>
+                </a>
+                <ul class="collapse list-unstyled pl-4 w-100 <?= $title == 'Laporan Pemeliharaan Aset' || $title == 'Laporan Monitoring Aset' ? 'show' : '' ?>" id="fileman">
+                    <a class="nav-link pl-3 <?= $title == 'Laporan Pemeliharaan Aset' ? 'active' : '' ?> " href="<?= base_url('/laporan_pemeliharaan') ?>"><span class="ml-1">Pemeliharaan Aset</span></a>
+                    <a class="nav-link pl-3 <?= $title == 'Laporan Monitoring Aset' ? 'active' : '' ?>" href="<?= base_url('/laporan_monitoring') ?>"><span class="ml-1">Monitoring Aset</span></a>
+                </ul>
+            </li>
         </ul>
     </nav>
 </aside>

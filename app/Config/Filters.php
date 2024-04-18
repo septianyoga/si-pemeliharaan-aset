@@ -60,6 +60,9 @@ class Filters extends BaseConfig
                     '/jadwal_aktivitas/*',
                     '/profil',
                     '/profil/*',
+                    '/lihat_kondisi_aset',
+                    '/laporan_pemeliharaan',
+                    '/laporan_monitoring'
                 ]
             ],
             'driverfilter' => [
@@ -69,6 +72,10 @@ class Filters extends BaseConfig
                     '/riwayat_aktivitas',
                     '/profil',
                     '/profil/*',
+                    '/lihat_kondisi_aset',
+                    '/laporan_pemeliharaan',
+                    '/laporan_monitoring',
+                    '/jadwal_pemeliharaan',
                 ]
             ],
             'userPIC' => [
@@ -76,6 +83,9 @@ class Filters extends BaseConfig
                     '/dashboard',
                     '/jadwal_pemeliharaan',
                     '/jadwal_pemeliharaan/*',
+                    '/lihat_kondisi_aset',
+                    '/laporan_pemeliharaan',
+                    '/laporan_monitoring'
                 ]
             ],
         ],

@@ -4,7 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Aset;
+use App\Models\JadwalAktivitas;
+use App\Models\JadwalPemeliharaan;
+use App\Models\Maps;
 use CodeIgniter\HTTP\ResponseInterface;
+use Dompdf\Dompdf;
 
 class AsetController extends BaseController
 {
@@ -114,5 +118,59 @@ class AsetController extends BaseController
         $aset = new Aset();
         $aset->delete($id);
         return redirect()->back()->with('pesan', 'Aset berhasil dihapus!');
+    }
+
+    public function lihatKondisi()
+    {
+        $aset = new Aset();
+        $pemeliharaan = new JadwalPemeliharaan();
+        $aktivitas = new JadwalAktivitas();
+        return view('kondisi_aset/index', [
+            'title' => 'Lihat Status Kondisi Aset',
+            'asets' => $aset->orderBy('asal', "ASC")->findAll(),
+            'pemeliharaans' => $pemeliharaan->findAll(),
+            'aktivitass'    => $aktivitas->findAll()
+        ]);
+    }
+
+    public function laporanMonitoring()
+    {
+        $aset = new Aset();
+        $maps = new Maps();
+        return view('laporan/monitoring', [
+            'title' => 'Laporan Monitoring Aset',
+            'asets' => $aset->findAll(),
+            'maps'  => $maps->findAll()
+        ]);
+    }
+
+    public function cetakMonitoring()
+    {
+        $aset = new Aset();
+        $maps = new Maps();
+
+        $filename = 'Laporan_Monitoring-' . date('y-m-d-H-i-s');
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        // load HTML content
+        $dompdf->loadHtml(view('cetak_laporan/monitoring', [
+            'title' => 'Cetak Laporan Monitoring Aset',
+            'asets'  => $aset->findAll(),
+            'maps'  => $maps->findAll(),
+        ]));
+
+        // (optional) setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // render html as PDF
+        $dompdf->render();
+
+        // output the generated pdf
+        $dompdf->stream($filename);
+        // $dompdf->stream($filename, array("Attachment" => false));
+
+        exit(0);
     }
 }
