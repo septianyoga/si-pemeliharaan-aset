@@ -1,6 +1,14 @@
 <?= $this->extend('layout/main'); ?>
 <?= $this->section('content'); ?>
-<h2 class="mb-2 page-title"><?= $title ?></h2>
+<div class="d-flex justify-content-between">
+    <h2 class=" page-title"><?= $title ?></h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Aset</li>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="<?= base_url('/lihat_kondisi_aset') ?>">Kondisi Aset</a></li>
+        </ol>
+    </nav>
+</div>
 <div class="row my-4">
     <!-- Small table -->
     <div class="col-md-12">

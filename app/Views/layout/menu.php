@@ -16,6 +16,8 @@
                 <span class="avatar avatar-sm mt-2">
                     <img src="<?= base_url('assets/user.png') ?>" alt="..." class="avatar-img rounded-circle">
                 </span>
+                <span class="h6 page-title"><?= session()->get('nama') ?></span>
+
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="<?= base_url('/profil') ?>">Profile</a>
@@ -34,20 +36,14 @@
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
             <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-                    <g>
-                        <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                        <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                        <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                    </g>
-                </svg>
+                <img src="<?= base_url('/assets/logo.png') ?>" alt="Logo SIAP" class="w-25">
             </a>
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown <?= $title == 'Dashboard' ? 'active' : '' ?>">
                 <a href="<?= base_url('dashboard') ?>" class=" nav-link">
                     <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+                    <span class="ml-3 item-text">Dashboard</span>
                 </a>
             </li>
         </ul>
@@ -124,11 +120,11 @@
                 </li>
             <?php } ?>
             <li class="nav-item dropdown <?= $title == 'Laporan Pemeliharaan Aset' || $title == 'Laporan Monitoring Aset' ? 'active' : '' ?>">
-                <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <a href="#laporan" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-file-text fe-16"></i>
                     <span class="ml-3 item-text">Laporan</span>
                 </a>
-                <ul class="collapse list-unstyled pl-4 w-100 <?= $title == 'Laporan Pemeliharaan Aset' || $title == 'Laporan Monitoring Aset' ? 'show' : '' ?>" id="fileman">
+                <ul class="collapse list-unstyled pl-4 w-100 <?= $title == 'Laporan Pemeliharaan Aset' || $title == 'Laporan Monitoring Aset' ? 'show' : '' ?>" id="laporan">
                     <a class="nav-link pl-3 <?= $title == 'Laporan Pemeliharaan Aset' ? 'active' : '' ?> " href="<?= base_url('/laporan_pemeliharaan') ?>"><span class="ml-1">Pemeliharaan Aset</span></a>
                     <a class="nav-link pl-3 <?= $title == 'Laporan Monitoring Aset' ? 'active' : '' ?>" href="<?= base_url('/laporan_monitoring') ?>"><span class="ml-1">Monitoring Aset</span></a>
                 </ul>

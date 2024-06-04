@@ -79,12 +79,13 @@ class RegistrasiController extends ResourceController
             ],
             'password' => [
                 'label' => 'Password',
-                'rules' => 'required|min_length[8]',
-                // 'rules' => 'required|min_length[8]|regex_match[/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/]',
+                'rules' => 'required|min_length[8]|max_length[16]',
+                'rules' => 'required|min_length[8]|regex_match[/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'min_length'    => '{field} minimal terdiri dari 8 karakter',
-                    // 'regex_match'   => '{field} minimal mengandung satu huruf besar, angka, dan karakter'
+                    'max_length'    => '{field} maksimal hingga 16 karakter',
+                    'regex_match'   => '{field} minimal mengandung satu huruf besar, angka, dan karakter'
                 ],
             ],
             'passwordkonf' => [
@@ -111,8 +112,8 @@ class RegistrasiController extends ResourceController
         ];
 
         $user = new User();
-        $user->insert($data);
-        return redirect()->to(base_url('login'))->with('success', 'Registrasi Akun Berhasil!');
+        // $user->insert($data);
+        // return redirect()->to(base_url('login'))->with('success', 'Registrasi Akun Berhasil!');
     }
 
     /**

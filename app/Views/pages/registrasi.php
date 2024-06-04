@@ -21,21 +21,21 @@
     <link rel="stylesheet" href="<?= base_url('admin/css/app-dark.css') ?>" id="darkTheme" disabled>
     <!-- sweet alert -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@4/default.css">
+    <style>
+        #togglePassword6,
+        #togglePassword5:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="light ">
     <div class="wrapper vh-100">
-        <div class="row align-items-center h-100">
+        <div class="row align-items-center h-100 p-0 m-0">
             <form action="<?= base_url('/registrasi') ?>" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
                 <div class="mx-auto text-center my-4">
                     <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                        <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-                            <g>
-                                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                            </g>
-                        </svg>
+                        <img src="<?= base_url('/assets/logo.png') ?>" alt="Logo SIAP" class="w-25">
                     </a>
                     <h2 class="my-3">Register</h2>
                 </div>
@@ -67,21 +67,32 @@
                 <hr class="my-4">
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group position-relative">
                             <label for="inputPassword5">Password</label>
-                            <input type="password" name="password" class="form-control" id="inputPassword5" placeholder="Masukan Password">
+                            <div class="input-group mb-3">
+                                <input type="password" name="password" class="form-control" id="inputPassword5" placeholder="Masukan Password">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><span id="togglePassword5" class="fe fe-eye "></span></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group position-relative">
                             <label for="inputPassword6">Password Konfirmasi</label>
-                            <input type="password" name="passwordkonf" class="form-control" id="inputPassword6" placeholder="Masukan Password Konfirmasi">
+                            <div class="input-group mb-3">
+                                <input type="password" name="passwordkonf" class="form-control" id="inputPassword6" placeholder="Masukan Password Konfirmasi">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><span id="togglePassword6" class="fe fe-eye "></span></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 <p class="text-center mt-3"><a class="text-decoration-none text-center" href="<?= base_url('/login') ?>">Sudah memiliki akun? Login Sekarang.</a></p>
-                <p class="mt-5 mb-3 text-muted text-center">© 2020</p>
+                <p class="mt-5 mb-3 text-muted text-center">Copyright © <?= date('Y') ?> SIAP</p>
+
             </form>
         </div>
     </div>
@@ -126,6 +137,33 @@
             });
         </script>
     <?php } ?>
+    <script>
+        $(document).ready(function() {
+            $('#togglePassword5').on('click', function() {
+                var passwordField = $('#inputPassword5');
+                var passwordFieldType = passwordField.attr('type');
+                if (passwordFieldType === 'password') {
+                    passwordField.attr('type', 'text');
+                    $(this).removeClass('fe-eye').addClass('fe-eye-off');
+                } else {
+                    passwordField.attr('type', 'password');
+                    $(this).removeClass('fe-eye-off').addClass('fe-eye');
+                }
+            });
+
+            $('#togglePassword6').on('click', function() {
+                var passwordField = $('#inputPassword6');
+                var passwordFieldType = passwordField.attr('type');
+                if (passwordFieldType === 'password') {
+                    passwordField.attr('type', 'text');
+                    $(this).removeClass('fe-eye').addClass('fe-eye-off');
+                } else {
+                    passwordField.attr('type', 'password');
+                    $(this).removeClass('fe-eye-off').addClass('fe-eye');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

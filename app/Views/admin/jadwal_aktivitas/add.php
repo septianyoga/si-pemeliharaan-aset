@@ -2,6 +2,13 @@
 <?= $this->section('content'); ?>
 <div class="d-flex justify-content-between">
     <h2 class="mb-2 page-title"><?= $title ?></h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="<?= base_url('/jadwal_aktivitas') ?>">Jadwal Aktivitas</a></li>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="<?= base_url('/jadwal_aktivitas/add') ?>"><?= $title ?></a></li>
+            <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+        </ol>
+    </nav>
 </div>
 <div class="row my-4">
     <!-- Small table -->

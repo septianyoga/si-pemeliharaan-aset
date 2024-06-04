@@ -6,7 +6,15 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#varyModal" data-whatever="@mdo"><i class="fe fe-user-plus fe-16"></i> Tambah</button>
     </div>
 </div>
-<div class="row my-4">
+<div class="d-flex justify-content-end">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="<?= base_url('/user') ?>"><?= $title ?></a></li>
+            <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+        </ol>
+    </nav>
+</div>
+<div class="row">
     <!-- Small table -->
     <div class="col-md-12">
         <div class="card shadow">
