@@ -39,7 +39,7 @@ class Filters extends BaseConfig
         'before' => [
             'adminfilter' => [
                 'except' => [
-                    '/',
+                    // '/',
                     '/login',
                     '/login/*',
                     '/registrasi',

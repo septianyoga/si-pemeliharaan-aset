@@ -26,10 +26,11 @@ class Login extends BaseController
             ],
             'password' => [
                 'label' => 'Password',
-                'rules' => 'required|min_length[3]',
+                'rules' => 'required|min_length[8]|max_length[16]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
-                    'min_length' => '{field} minimal terdiri dari 3 huruf.',
+                    'min_length' => '{field} minimal terdiri dari 8 karakter.',
+                    'max_length' => '{field} maksimal terdiri dari 16 karakter.',
                 ],
             ],
         ]);

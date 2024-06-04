@@ -32,4 +32,8 @@
     a.nav-link.pl-3.active {
         color: #1b68ff !important;
     }
+
+    .breadcrumb {
+        background-color: unset;
+    }
 </style>

@@ -11,7 +11,7 @@ class DashboardController extends BaseController
     {
         //
         return view('admin/dashboard', [
-            'title' => 'Dasboard'
+            'title' => 'Dashboard'
         ]);
     }
 }
