@@ -45,4 +45,20 @@ class JadwalAktivitas extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDataLast14Days()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table($this->table);
+
+        $query = $builder->select("DATE(tanggal) as date, 
+                SUM(CASE WHEN status = 'Diantar' THEN 1 ELSE 0 END) as diantar, 
+                SUM(CASE WHEN status = 'Sampai' THEN 1 ELSE 0 END) as sampai")
+            ->where('tanggal >=', date('Y-m-d', strtotime('-14 days')))
+            ->groupBy('DATE(tanggal)')
+            ->orderBy('date', 'ASC')
+            ->get();
+
+        return $query->getResultArray();
+    }
 }
