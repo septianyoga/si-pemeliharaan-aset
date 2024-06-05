@@ -225,22 +225,13 @@
 </script>
 <?php if ($title == "Dashboard") { ?>
   <script>
-    function generateData(e, t, o) {
-      for (var a = 0, r = []; a < t;) {
-        var s = Math.floor(750 * Math.random()) + 1,
-          i = Math.floor(Math.random() * (o.max - o.min + 1)) + o.min,
-          l = Math.floor(61 * Math.random()) + 15;
-        r.push([s, i, l]), a++
-      }
-      return r
-    }
     var columnChart, columnChartoptions = {
         series: [{
-          name: "Orders",
-          data: [100, 66, 44, 55, 41, 24, 67, 22, 43, 32, 66, 44, 55, 41, 24, 67, 22, 43]
+          name: "Diantar",
+          data: <?= json_encode($chartData['diantarData']) ?>
         }, {
-          name: "Visitors",
-          data: [7, 30, 13, 23, 20, 12, 8, 13, 27, 7, 30, 13, 23, 20, 12, 8, 13, 27]
+          name: "Sampai",
+          data: <?= json_encode($chartData['sampaiData']) ?>
         }],
         chart: {
           type: "bar",
@@ -282,7 +273,7 @@
         },
         xaxis: {
           type: "datetime",
-          categories: ["01/01/2020 GMT", "01/02/2020 GMT", "01/03/2020 GMT", "01/04/2020 GMT", "01/05/2020 GMT", "01/06/2020 GMT", "01/07/2020 GMT", "01/08/2020 GMT", "01/09/2020 GMT", "01/10/2020 GMT", "01/11/2020 GMT", "01/12/2020 GMT", "01/13/2020 GMT", "01/14/2020 GMT", "01/15/2020 GMT", "01/16/2020 GMT", "01/17/2020 GMT", "01/18/2020 GMT"],
+          categories: <?= json_encode($chartData['categories']) ?>,
           labels: {
             show: !0,
             trim: !0,
