@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="<?= base_url('/assets/logo.png') ?>">
 <title><?= $title ?> | SIAP</title>
 <!-- Simple bar CSS -->
 <link rel="stylesheet" href="<?= base_url('admin/css/simplebar.css') ?>">
@@ -22,7 +22,6 @@
 <link rel="stylesheet" href="<?= base_url('admin/css/app-light.css') ?>" id="lightTheme">
 <link rel="stylesheet" href="<?= base_url('admin/css/app-dark.css') ?>" id="darkTheme" disabled>
 <link rel="stylesheet" href="<?= base_url('admin/css/dataTables.bootstrap4.css') ?>">
-
 <!-- sweet alert -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@4/default.css">
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@4/default.css"> -->
